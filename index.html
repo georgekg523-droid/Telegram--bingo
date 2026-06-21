@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bingo Zbet</title>
+    <style>
+        body { background: #0f3460; color: white; font-family: sans-serif; text-align: center; padding: 20px; }
+        h1 { color: #ffcc00; }
+        .grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; max-width: 400px; margin: 20px auto; }
+        .cell { background: #1a1a2e; padding: 15px; border-radius: 8px; cursor: pointer; border: 1px solid #444; font-weight: bold; }
+        .cell.marked { background: #e94560; border-color: #ff0000; }
+        #status { margin-top: 20px; font-size: 1.2em; color: #00ffcc; }
+    </style>
+</head>
+<body>
+    <h1>Bingo Zbet</h1>
+    <div id="status">Wait, the game is starting...</div>
+    <div class="grid" id="grid"></div>
+
+    <script>
+        const grid = document.getElementById('grid');
+        const status = document.getElementById('status');
+
+        // Generate 20 buttons
+        for (let i = 1; i <= 20; i++) {
+            const cell = document.createElement('div');
+            cell.classList.add('cell');
+            cell.innerText = i;
+            cell.onclick = function() {
+                // Clear previous selection
+                document.querySelectorAll('.cell').forEach(c => c.classList.remove('marked'));
+                // Mark new selection
+                this.classList.add('marked');
+                status.innerText = "You selected " + i + ". Good luck!";
+            };
+            grid.appendChild(cell);
+        }
+    </script>
+</body>
+</html>
