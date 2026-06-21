@@ -1,42 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bingo Mini App</title>
+    <title>Bingo Game</title>
     <style>
-        body { background-color: #121225; color: white; font-family: sans-serif; text-align: center; margin: 0; padding: 15px; }
-        .header { font-size: 26px; font-weight: bold; color: #ffcc00; margin-bottom: 5px; }
-        .subtitle { font-size: 14px; color: #b0b0c5; margin-bottom: 20px; }
-        .grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; max-width: 360px; margin: 0 auto; background-color: #1e1e38; padding: 10px; border-radius: 12px; }
-        .cell-header { background-color: #3b3b6d; padding: 12px 0; font-weight: bold; font-size: 18px; border-radius: 6px; }
-        .cell { background-color: #ffffff; color: #121225; padding: 18px 0; font-size: 18px; font-
-        .cell.marked { background-color: #00cc66; color: white; }
-        .cell.star { background-color: #00cc66; color: white; font-size: 20px; }
+        body { font-family: sans-serif; text-align: center; background: #1a1a2e; color: white; padding: 20px; }
+        button { padding: 20px; font-size: 20px; margin-top: 20px; cursor: pointer; }
     </style>
 </head>
 <body>
-    <div class="header">👑 BINGO! 👑</div>
-    <div class="subtitle">CARTEL NO #196</div>
-    <div class="grid" id="bingo-grid">
-        <div class="cell-header" style="color: #3399ff;">B</div>
-        <div class="cell-header" style="color: #9933ff;">I</div>
-        <div class="cell-header" style="color: #ff3399;">N</div>
-        <div class="cell-header" style="color: #00cc66;">G</div>
-        <div class="cell-header" style="color: #ff9933;">O</div>
-    </div>
+    <h1>Bingo Zbet</h1>
+    <p>Click the button to get a random number!</p>
+    <h2 id="number">?</h2>
+    <button onclick="pickNumber()">Pick Number</button>
     <script>
-        function getNumbers(min, max) {
-            let arr = [];
-            while(arr.length < 5){
-                let r = Math.floor(Math.random() * (max - min + 1)) + min;
-                if(arr.indexOf(r) === -1) arr.push(r);
-            }
-            return arr;
+        function pickNumber() {
+            document.getElementById('number').innerHTML = Math.floor(Math.random() * 75) + 1;
         }
-        const columns = {
-            'B': getNumbers(1, 15), 'I': getNumbers(16, 30), 'N': getNumbers(31, 45), 'G': getNumbers(46, 60), 'O': getNumbers(61, 75)
-        };
-        const gridElement = document.getElementById('bingo-grid');
-        for (let row = 0; row < 5; row++) {
-            ['B', 'I', 'N', 'G', 'O'].forEach(col => {
+    </script>
+</body>
+</html>
