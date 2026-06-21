@@ -40,10 +40,3 @@
         const gridElement = document.getElementById('bingo-grid');
         for (let row = 0; row < 5; row++) {
             ['B', 'I', 'N', 'G', 'O'].forEach(col => {
-                const cell = document.createElement('div');
-                if (row === 2 && col === 'N') {
-                    cell.className = 'cell star';
-                    cell.innerText = '★';
-                } else {
-                    cell.className = 'cell';
-                    cell.innerText = columns[co
